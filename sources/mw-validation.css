@@ -1,0 +1,28 @@
+input.ng-invalid.ng-dirty {
+   border-color: red;
+}
+select.ng-invalid.ng-dirty {
+   border-color: red;
+}
+
+
+    .error-block {
+        position: absolute;
+        color: rgb(255, 0, 0);
+        font-size: 0.65em;
+        font-weight: bold;
+        width: 400px;
+    }
+    
+    
+.has-error .form-control-feedback {
+    color: #FF0500;
+}
+
+.has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline {
+    color: #FF0500;
+}
+
+.has-error .form-control {
+    border-color: #FF0500;
+}
