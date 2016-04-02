@@ -150,6 +150,16 @@
 
                                 angularSetPristine.call(self);
                             };
+                            var angularSetDirty = ctrl.$setDirty;
+                            ctrl.$setDirty = function() {
+
+                                scope.$safeApply(function() {
+                                    ctrl.mw.hasFocus = true;
+                                    ctrl.mw.hasBlur = true;
+                                });
+
+                                angularSetDirty.call(self);
+                            };
 
                             // On ne continue pas si les info sont vide
                             if (!attr.mwValidate) {
