@@ -3,7 +3,7 @@
 
 
     angular.module('mw.validation').directive('mwValidate', [
-        '$parse', '$timeout', '$q', function($parse, $timeout, $q) {
+        '$parse', '$timeout', '$q', '$window', function($parse, $timeout, $q, $window) {
             return {
                 restrict: 'EA',
                 require: ['ngModel','^?form'],
@@ -207,7 +207,7 @@
                                 var formatters = [];
                                 var parsers = [];
 
-                                var validationResults = mw.validation[validateMethodName](viewValue, rulesDefinition);
+                                var validationResults = $window.mw.validation[validateMethodName](viewValue, rulesDefinition);
 
                                 var isValid = true;
 
@@ -277,7 +277,7 @@
                                 var rulesDefinition = scope.$eval(attr.mwValidate);
 
                                 // Extrait toutes les fonctions récurssivements
-                                var functions = mw.objectValidation.getFunctions(rulesDefinition);
+                                var functions = $window.mw.objectValidation.getFunctions(rulesDefinition);
                                 var l = functions.length;
                                 // On gette tous changements dans les retours des fonctions
 
