@@ -286,7 +286,20 @@
                                 }
 
                                 for (var i = 0; i < l; i++) {
-                                    var destroy = scope.$watch(functions[i], tempValidate, true);
+                                    
+                                    var func = functions[i];
+                                    var funcToBind = func.func;
+                                    if(func.name ==="validateView"){
+                                        funcToBind = function(){
+                                            return func.func(ctrl.$viewValue);
+                                        }
+                                    } else if(func.name ==="validateModel")  {
+                                        funcToBind = function(){
+                                            return func.func(ctrl.$modelValue);
+                                        }
+                                    }
+                                    
+                                    var destroy = scope.$watch(funcToBind, tempValidate, true);
 
                                     destroyes.push(destroy);
                                 }
