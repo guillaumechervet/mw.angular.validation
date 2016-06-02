@@ -170,6 +170,7 @@
                             ctrl.$formatters.unshift(function(modelValue) {
                                 ctrl.mw.errorMessages.length = 0;
 
+                                modelValue = ctrl.$$rawModelValue
                                 var result = validateInternal(modelValue, "validateModel");
 
                                 if (result.isValid) {
