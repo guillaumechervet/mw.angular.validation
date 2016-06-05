@@ -283,7 +283,8 @@
                                 // On gette tous changements dans les retours des fonctions
 
                                 function tempValidate() {
-                                    validateInternal(ctrl.$viewValue, "validateView");
+                                   // validateInternal(ctrl.$viewValue, "validateView");
+                                    ctrl.$$parseAndValidate();
                                 }
 
                                 for (var i = 0; i < l; i++) {
@@ -294,11 +295,11 @@
                                         funcToBind = function(){
                                             return func.func(ctrl.$viewValue);
                                         }
-                                    } else if(func.name ==="validateModel")  {
+                                    } /*else if(func.name ==="validateModel")  {
                                         funcToBind = function(){
                                             return func.func(ctrl.$modelValue);
                                         }
-                                    }
+                                    }*/
                                     
                                     var destroy = scope.$watch(funcToBind, tempValidate, true);
 
