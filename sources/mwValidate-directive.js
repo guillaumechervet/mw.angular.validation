@@ -173,14 +173,17 @@
                                 modelValue = ctrl.$$rawModelValue
                                 var result = validateInternal(modelValue, "validateModel");
 
-                                if (result.isValid) {
+                                //if (result.isValid) {
                                     var length = result.formatters.length;
 
                                     for (var i = 0; i < length; i++) {
                                         return result.formatters[i](modelValue);
                                     }
-                                }
+                                //}
 
+                                if(modelValue != null && modelValue != undefined){
+                                    return modelValue.toString();
+                                }
                                 return modelValue;
                             });
 
@@ -190,15 +193,15 @@
 
                                 var result = validateInternal(viewValue, "validateView");
 
-                                if (result.isValid) {
+                                //if (result.isValid) {
                                     var length = result.parsers.length;
                                     for (var i = 0; i < length; i++) {
                                         return result.parsers[i](viewValue);
                                     }
                                     return viewValue;
-                                } else {
-                                    return "";
-                                }
+                                //} 
+                                 
+                                //return "";
                             });
 
                             // Réalise l'éxécution de la validation
