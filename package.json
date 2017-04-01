@@ -1,6 +1,7 @@
 {
   "version": "1.0.4",
-  "name": "bworld",
+  "name": "mw.angular.validation",
+  "main":"./sources/index.js",
   "devDependencies": {
     "bower": "~1.3.0",
     "grunt": "0.4.5",

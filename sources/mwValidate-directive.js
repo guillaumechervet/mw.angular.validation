@@ -1,6 +1,4 @@
-﻿(function () {
-    'use strict';
-
+﻿import app from './app';
 
     angular.module('mw.validation').directive('mwValidate', [
         '$parse', '$timeout', '$q', '$window', function($parse, $timeout, $q, $window) {
@@ -368,7 +366,3 @@
 
         }
     ]);
-
-
-
-    }());

@@ -1,8 +1,5 @@
 ﻿
-(function () {
-    'use strict';
 
-    angular.module('mw.validation',
-        [], function () { });
+var app = angular.module('mw.validation', [], function () { });
 
-}());
+export default app;
