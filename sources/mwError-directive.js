@@ -80,7 +80,7 @@
                                 if (result.nbFocus <= 0) {
                                     if (result.nbError > 0) {
                                         if (result.message) {
-                                            elm.find(".error-block").html(result.message);
+                                            angular.element(elm[0].getElementsByClassName("error-block")).html(result.message);
                                         }
                                         elm.css("display", "block");
                                     } else {
