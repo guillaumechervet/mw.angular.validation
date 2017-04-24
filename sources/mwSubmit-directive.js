@@ -1,8 +1,6 @@
-﻿(function() {
-'use strict';
+﻿import app from './app';
 
-
-    angular.module('mw.validation').directive('mwSubmit', [
+    app.directive('mwSubmit', [
         '$parse', '$timeout', '$q', function($parse, $timeout, $q) {
             return {
                 restrict: 'EA',
@@ -118,7 +116,3 @@
             };
         }
     ]);
-
-
-
-}());

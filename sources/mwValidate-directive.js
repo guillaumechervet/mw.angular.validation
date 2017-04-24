@@ -1,6 +1,4 @@
-﻿(function () {
-    'use strict';
-
+﻿import app from './app';
 
     angular.module('mw.validation').directive('mwValidate', [
         '$parse', '$timeout', '$q', '$window', function($parse, $timeout, $q, $window) {
@@ -170,16 +168,20 @@
                             ctrl.$formatters.unshift(function(modelValue) {
                                 ctrl.mw.errorMessages.length = 0;
 
+                                modelValue = ctrl.$$rawModelValue
                                 var result = validateInternal(modelValue, "validateModel");
 
-                                if (result.isValid) {
+                                //if (result.isValid) {
                                     var length = result.formatters.length;
 
                                     for (var i = 0; i < length; i++) {
                                         return result.formatters[i](modelValue);
                                     }
-                                }
+                                //}
 
+                                if(modelValue != null && modelValue != undefined){
+                                    return modelValue.toString();
+                                }
                                 return modelValue;
                             });
 
@@ -189,15 +191,15 @@
 
                                 var result = validateInternal(viewValue, "validateView");
 
-                                if (result.isValid) {
+                                //if (result.isValid) {
                                     var length = result.parsers.length;
                                     for (var i = 0; i < length; i++) {
                                         return result.parsers[i](viewValue);
                                     }
                                     return viewValue;
-                                } else {
-                                    return "";
-                                }
+                                //} 
+                                 
+                                //return "";
                             });
 
                             // Réalise l'éxécution de la validation
@@ -282,7 +284,8 @@
                                 // On gette tous changements dans les retours des fonctions
 
                                 function tempValidate() {
-                                    validateInternal(ctrl.$viewValue, "validateView");
+                                   // validateInternal(ctrl.$viewValue, "validateView");
+                                    ctrl.$$parseAndValidate();
                                 }
 
                                 for (var i = 0; i < l; i++) {
@@ -293,11 +296,11 @@
                                         funcToBind = function(){
                                             return func.func(ctrl.$viewValue);
                                         }
-                                    } else if(func.name ==="validateModel")  {
+                                    } /*else if(func.name ==="validateModel")  {
                                         funcToBind = function(){
                                             return func.func(ctrl.$modelValue);
                                         }
-                                    }
+                                    }*/
                                     
                                     var destroy = scope.$watch(funcToBind, tempValidate, true);
 
@@ -363,7 +366,3 @@
 
         }
     ]);
-
-
-
-    }());
