@@ -83,6 +83,7 @@ app.directive('mwError', ['$parse', '$timeout', function ($parse, $timeout) {
                                     } else {
                                         elm.css("display", "none");
                                     }
+                                }
                     };
 
                     // On retourne la valeur de l'élement watché
