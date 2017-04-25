@@ -77,7 +77,7 @@ app.directive('mwError', ['$parse', '$timeout', function ($parse, $timeout) {
                                 if (result.nbFocus <= 0) {
                                     if (result.nbError > 0) {
                                         if (result.message) {
-                                            angular.element(elm[0].querySelector("error-block")).html(result.message);
+                                            angular.element(elm[0].getElementsByClassName("error-block")).html(result.message);
                                         }
                                         elm.css("display", "block");
                                     } else {
